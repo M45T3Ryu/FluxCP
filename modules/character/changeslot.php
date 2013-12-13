@@ -14,10 +14,10 @@ if (!$char || ($char->account_id != $session->account->account_id && !$auth->all
 	$this->deny();
 }
 
-$title = "Change Slot for {$char->name}";
+$title = htmlspecialchars(Flux::message('DMCharCSlot1'))." {$char->name}";
 
 if ($char->online) {
-	$session->setMessageData("Cannot change {$char->name}'s slot.  He/she is currenty online.");
+	$session->setMessageData(htmlspecialchars(Flux::message('DMCharCSlot2'))." {$char->name}".htmlspecialchars(Flux::message('DMCharCSlot3')));
 	$this->redirect();
 }
 
@@ -29,13 +29,13 @@ if (count($_POST)) {
 	$slot = (int)$params->get('slot');
 	
 	if ($slot > $server->maxCharSlots) {
-		$errorMessage = "Slot number must not be greater than {$server->maxCharSlots}.";
+		$errorMessage = htmlspecialchars(Flux::message('DMCharCSlot4'))." {$server->maxCharSlots}.";
 	}
 	elseif ($slot < 1) {
-		$errorMessage = 'Slot number must be a number greater than zero.';
+		$errorMessage = htmlspecialchars(Flux::message('DMCharCSlot5'));
 	}
 	elseif ($slot === (int)$char->char_num+1) {
-		$errorMessage = 'Please choose a different slot.';
+		$errorMessage = htmlspecialchars(Flux::message('DMCharCSlot6'));
 	}
 	else {
 		$sql  = "SELECT char_id, name, online FROM {$server->charMapDatabase}.`char` AS ch ";
@@ -48,7 +48,7 @@ if (count($_POST)) {
 		
 		if ($otherChar) {
 			if ($otherChar->online) {
-				$errorMessage = "{$otherChar->name} is using that slot, and is currently online.";
+				$errorMessage = "{$otherChar->name} ".htmlspecialchars(Flux::message('DMCharCSlot7'));
 			}
 			else {
 				$sql  = "UPDATE {$server->charMapDatabase}.`char` SET `char`.char_num = ?";
@@ -68,10 +68,10 @@ if (count($_POST)) {
 			
 			if ($otherChar) {
 				$otherNum = $char->char_num + 1;
-				$session->setMessageData("You have successfully swapped {$char->name}'s slot with {$otherChar->name} (#$otherNum and #$slot).");
+				$session->setMessageData(htmlspecialchars(Flux::message('DMCharCSlot8'))." {$char->name}".htmlspecialchars(Flux::message('DMCharCSlot9'))." {$otherChar->name} (#$otherNum and #$slot).");
 			}
 			else {
-				$session->setMessageData("You have successfully changed {$char->name}'s slot to #$slot.");
+				$session->setMessageData(htmlspecialchars(Flux::message('DMCharCSlot10'))." {$char->name}".htmlspecialchars(Flux::message('DMCharCSlot11'))." #$slot.");
 			}
 			
 			$isMine = $char->account_id == $session->account->account_id;

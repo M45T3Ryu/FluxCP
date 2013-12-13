@@ -3,7 +3,7 @@ if (!defined('FLUX_ROOT')) exit;
 
 $this->loginRequired();
 
-$title = 'Viewing Character';
+$title = htmlspecialchars(Flux::message('DMCharT6'));
 
 require_once 'Flux/TemporaryTable.php';
 

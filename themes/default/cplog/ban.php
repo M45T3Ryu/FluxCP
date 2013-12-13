@@ -1,28 +1,28 @@
 <?php if (!defined('FLUX_ROOT')) exit; ?>
-<h2>Account Bans</h2>
-<p class="toggler"><a href="javascript:toggleSearchForm()">Search...</a></p>
+<h2><?php echo htmlspecialchars(Flux::message('DSCPLogB1')) ?></h2>
+<p class="toggler"><a href="javascript:toggleSearchForm()"><?php echo htmlspecialchars(Flux::message('DSCPLogB2')) ?></a></p>
 <form action="<?php echo $this->url ?>" method="get" class="search-form">
 	<?php echo $this->moduleActionFormInputs($params->get('module'), $params->get('action')) ?>
 	<p>
-		<label for="account">Account:</label>
+		<label for="account"><?php echo htmlspecialchars(Flux::message('DSCPLogB3')) ?></label>
 		<input type="text" name="account" id="account" value="<?php echo htmlspecialchars($params->get('account')) ?>" />
 		...
-		<label for="banned_by">Banned By:</label>
+		<label for="banned_by"><?php echo htmlspecialchars(Flux::message('DSCPLogB4')) ?></label>
 		<input type="text" name="banned_by" id="banned_by" value="<?php echo htmlspecialchars($params->get('banned_by')) ?>" />
 		...
-		<label for="ban_type">Ban Type:</label>
+		<label for="ban_type"><?php echo htmlspecialchars(Flux::message('DSCPLogB5')) ?></label>
 		<select name="ban_type" id="ban_type">
 			<option value=""<?php if (!($ban_type=$params->get('ban_type'))) echo ' selected="selected"' ?>><?php echo htmlspecialchars(Flux::message('AllLabel')) ?></option>
-			<option value="unban"<?php if ($ban_type == 'unban') echo ' selected="selected"' ?>>Unban</option>
-			<option value="ban"<?php if ($ban_type == 'ban') echo ' selected="selected"' ?>>Ban</option>
+			<option value="unban"<?php if ($ban_type == 'unban') echo ' selected="selected"' ?>><?php echo htmlspecialchars(Flux::message('DSCPLogB6')) ?></option>
+			<option value="ban"<?php if ($ban_type == 'ban') echo ' selected="selected"' ?>><?php echo htmlspecialchars(Flux::message('DSCPLogB7')) ?></option>
 		</select>
 	</p>
 	<p>
-		<label for="use_ban">Ban Date:</label>
+		<label for="use_ban"><?php echo htmlspecialchars(Flux::message('DSCPLogB8')) ?></label>
 		<input type="checkbox" name="use_ban" id="use_ban"<?php if ($params->get('use_ban')) echo ' checked="checked"' ?> />
 		<?php echo $this->dateTimeField('ban') ?>
 		...
-		<label for="use_ban_until">Ban Until:</label>
+		<label for="use_ban_until"><?php echo htmlspecialchars(Flux::message('DSCPLogB9')) ?></label>
 		<input type="checkbox" name="use_ban_until" id="use_ban_until"<?php if ($params->get('use_ban_until')) echo ' checked="checked"' ?> />
 		<?php echo $this->dateTimeField('ban_until') ?>
 	</p>
@@ -40,7 +40,7 @@
 		<th><?php echo $paginator->sortableColumn('ban_type', 'Ban Type') ?></th>
 		<th><?php echo $paginator->sortableColumn('ban_date', 'Ban Date') ?></th>
 		<th><?php echo $paginator->sortableColumn('ban_until', 'Ban Until') ?></th>
-		<th>Ban Reason</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSCPLogB10')) ?></th>
 	</tr>
 	<?php foreach ($bans as $ban): ?>
 	<tr>
@@ -60,32 +60,32 @@
 		</td>
 		<td>
 			<?php if (!$ban->ban_type): ?>
-				Unban
+				<?php echo htmlspecialchars(Flux::message('DSCPLogB6')) ?>
 			<?php elseif ($ban->ban_type == 1): ?>
-				<span class="account-state state-banned">Temporary Ban</span>
+				<span class="account-state state-banned"><?php echo htmlspecialchars(Flux::message('DSCPLogB11')) ?></span>
 			<?php elseif ($ban->ban_type == 2): ?>
-				<span class="account-state state-permanently-banned">Permanent Ban</span>
+				<span class="account-state state-permanently-banned"><?php echo htmlspecialchars(Flux::message('DSCPLogB12')) ?></span>
 			<?php else: ?>
-				<span class="not-applicable">Unknown</span>
+				<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSCPLogB13')) ?></span>
 			<?php endif ?>
 		</td>
 		<td>
 			<?php if ($ban->ban_date == '0000-00-00 00:00:00'): ?>
-				<span class="not-applicable">N/A</span>
+				<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSCPLogB14')) ?></span>
 			<?php else: ?>
 				<?php echo $this->formatDateTime($ban->ban_date) ?>
 			<?php endif ?>
 		</td>
 		<td>
 			<?php if ($ban->ban_until == '0000-00-00 00:00:00'): ?>
-				<span class="not-applicable">N/A</span>
+				<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSCPLogB14')) ?></span>
 			<?php else: ?>
 				<?php echo $this->formatDateTime($ban->ban_until) ?>
 			<?php endif ?>
 		</td>
 		<td>
 			<?php if ($ban->ban_reason == ''): ?>
-				<span class="not-applicable">None</span>
+				<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSCPLogB15')) ?></span>
 			<?php else: ?>
 				<?php echo htmlspecialchars($ban->ban_reason) ?>
 			<?php endif ?>
@@ -95,5 +95,5 @@
 </table>
 <?php echo $paginator->getHTML() ?>
 <?php else: ?>
-<p>No logs were found. <a href="javascript:history.go(-1)">Go back</a>.</p>
+<p><?php echo htmlspecialchars(Flux::message('DSCPLogB16')) ?> <a href="javascript:history.go(-1)"><?php echo htmlspecialchars(Flux::message('DSCPLogB17')) ?></a>.</p>
 <?php endif ?>

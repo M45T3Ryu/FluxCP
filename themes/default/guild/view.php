@@ -1,21 +1,21 @@
 <?php if (!defined('FLUX_ROOT')) exit; ?>
-<h2>Viewing Guild</h2>
+<h2><?php echo htmlspecialchars(Flux::message('DSGView1')) ?></h2>
 <?php if ($guild): ?>
-<h3>Guild Information for “<?php echo htmlspecialchars($guild->name) ?>”</h3>
+<h3><?php echo htmlspecialchars(Flux::message('DSGView2')) ?> “<?php echo htmlspecialchars($guild->name) ?>”</h3>
 <table class="vertical-table">
 	<tr>
-		<th>Guild ID</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView3')) ?></th>
 		<td><?php echo htmlspecialchars($guild->guild_id) ?></td>
-		<th>Guild Name</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView4')) ?></th>
 		<td><?php echo htmlspecialchars($guild->name) ?></td>
-		<th>Emblem ID</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView5')) ?></th>
 		<td><?php echo number_format($guild->emblem_id) ?></td>
 		<td><img src="<?php echo $this->emblem($guild->guild_id) ?>" /></td>
 	</tr>
 	<tr>
-		<th>Leader ID</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView6')) ?></th>
 		<td><?php echo htmlspecialchars($guild->char_id) ?></td>
-		<th>Leader Name</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView7')) ?></th>
 		<td>
 			<?php if ($auth->allowedToViewCharacter): ?>
 				<?php echo $this->linkToCharacter($guild->char_id, $guild->guild_master) ?>
@@ -23,53 +23,53 @@
 				<?php echo htmlspecialchars($guild->guild_master) ?>
 			<?php endif ?>
 		</td>
-		<th>Guild Level</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView8')) ?></th>
 		<td colspan="2"><?php echo number_format($guild->guild_lv) ?></td>
 	</tr>
 	<tr>
-		<th>Online Members</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView9')) ?></th>
 		<td><?php echo number_format($guild->connect_member) ?></td>
-		<th>Capacity</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView10')) ?></th>
 		<td><?php echo number_format($guild->max_member) ?></td>
-		<th>Average Level</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView11')) ?></th>
 		<td colspan="2"><?php echo number_format($guild->average_lv) ?></td>
 	</tr>
 	<tr>
-		<th>Guild EXP</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView12')) ?></th>
 		<td><?php echo number_format($guild->exp) ?></td>
-		<th>EXP until Level Up</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView13')) ?></th>
 		<td><?php echo number_format($guild->next_exp) ?></td>
-		<th>Skill Point</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView14')) ?></th>
 		<td colspan="2"><?php echo number_format($guild->skill_point) ?></td>
 	</tr>
 	<tr>
-		<th>Guild Notice 1</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView15')) ?></th>
 		<td colspan="6">
 			<?php if (trim($guild->mes1)): ?>
 				<?php echo htmlspecialchars($guild->mes1) ?>
 			<?php else: ?>
-				<span class="not-applicable">None</span>
+				<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSGView16')) ?></span>
 			<?php endif ?>
 		</td>
 	</tr>
 	<tr>
-		<th>Guild Notice 2</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSGView17')) ?></th>
 		<td colspan="6">
 			<?php if (trim($guild->mes2)): ?>
 				<?php echo htmlspecialchars($guild->mes2) ?></td>
 			<?php else: ?>
-				<span class="not-applicable">None</span>
+				<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSGView16')) ?></span>
 			<?php endif ?>
 		</td>
 	</tr>
 </table>
-<h3>Alliances of “<?php echo htmlspecialchars($guild->name) ?>”</h3>
+<h3><?php echo htmlspecialchars(Flux::message('DSGView18')) ?> “<?php echo htmlspecialchars($guild->name) ?>”</h3>
 <?php if ($alliances): ?>
-	<p><?php echo htmlspecialchars($guild->name) ?> has <?php echo count($alliances) ?> Alliance(s).</p>
+	<p><?php echo htmlspecialchars($guild->name) ?> <?php echo htmlspecialchars(Flux::message('DSGView19')) ?> <?php echo count($alliances) ?> <?php echo htmlspecialchars(Flux::message('DSGView20')) ?></p>
 	<table class="vertical-table">
 		<tr>
-			<th>Guild ID</th>
-			<th>Guild Name</th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView3')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView4')) ?></th>
 		</tr>
 		<?php foreach ($alliances AS $alliance): ?>
 		<tr>
@@ -85,15 +85,15 @@
 		<?php endforeach ?>
 	</table>
 <?php else: ?>
-	<p>There are no alliances for this guild.</p>
+	<p><?php echo htmlspecialchars(Flux::message('DSGView21')) ?></p>
 <?php endif ?>
-<h3>Oppositions of “<?php echo htmlspecialchars($guild->name) ?>”</h3>
+<h3><?php echo htmlspecialchars(Flux::message('DSGView22')) ?> “<?php echo htmlspecialchars($guild->name) ?>”</h3>
 <?php if ($oppositions): ?>
-	<p><?php echo htmlspecialchars($guild->name) ?> has <?php echo count($oppositions) ?> Opposition(s).</p>
+	<p><?php echo htmlspecialchars($guild->name) ?> <?php echo htmlspecialchars(Flux::message('DSGView19')) ?> <?php echo count($oppositions) ?> <?php echo htmlspecialchars(Flux::message('DSGView23')) ?></p>
 	<table class="vertical-table">
 		<tr>
-			<th>Guild ID</th>
-			<th>Guild Name</th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView3')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView4')) ?></th>
 		</tr>
 		<?php foreach ($oppositions AS $opposition): ?>
 		<tr>
@@ -109,23 +109,23 @@
 		<?php endforeach ?>
 	</table>
 <?php else: ?>
-	<p>There are no oppositions for this guild.</p>
+	<p><?php echo htmlspecialchars(Flux::message('DSGView24')) ?></p>
 <?php endif ?>
-<h3>Guild Members of “<?php echo htmlspecialchars($guild->name) ?>”</h3>
+<h3><?php echo htmlspecialchars(Flux::message('DSGView25')) ?> “<?php echo htmlspecialchars($guild->name) ?>”</h3>
 <?php if ($members): ?>
-	<p><?php echo htmlspecialchars($guild->name) ?> has <?php echo count($members) ?> guild member(s).</p>
+	<p><?php echo htmlspecialchars($guild->name) ?> <?php echo htmlspecialchars(Flux::message('DSGView19')) ?> <?php echo count($members) ?> <?php echo htmlspecialchars(Flux::message('DSGView26')) ?></p>
 	<table class="vertical-table">
 		<tr>
-			<th>Name</th>
-			<th>Job Class</th>
-			<th>Base Level</th>
-			<th>Job Level</th>
-			<th>EXP Devotion</th>
-			<th>Position ID</th>
-			<th>Position Name</th>
-			<th>Guild Rights</th>
-			<th>Tax</th>
-			<th>Last Login</th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView27')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView28')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView29')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView30')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView31')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView32')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView33')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView34')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView35')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView36')) ?></th>
 		</tr>
 		<?php foreach ($members AS $member): ?>
 		<tr>
@@ -140,7 +140,7 @@
 				<?php if ($job=$this->jobClassText($member->class)): ?>
 					<?php echo htmlspecialchars($job) ?>
 				<?php else: ?>
-					<span class="not-applicable">Unknown</span>
+					<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSGView37')) ?></span>
 				<?php endif ?>
 			</td>
 			<td><?php echo htmlspecialchars($member->base_level) ?></td>
@@ -156,9 +156,9 @@
 				<?php elseif ($member->mode == 1): ?>
 					<?php echo htmlspecialchars("Invite") ?>
 				<?php elseif ($member->mode == 0): ?>
-					<span class="not-applicable">None</span>
+					<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSGView16')) ?></span>
 				<?php else: ?>
-					<span class="not-applicable">Unknown</span>
+					<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSGView37')) ?></span>
 				<?php endif ?>
 			</td>
 			<td><?php echo number_format($member->guild_tax) ?>%</td>
@@ -167,16 +167,16 @@
 		<?php endforeach ?>
 	</table>
 <?php else: ?>
-	<p>There are no members in this guild.</p>
+	<p><?php echo htmlspecialchars(Flux::message('DSGView38')) ?></p>
 <?php endif ?>
-<h3>Member Expulsions of “<?php echo htmlspecialchars($guild->name) ?>”</h3>
+<h3><?php echo htmlspecialchars(Flux::message('DSGView39')) ?> “<?php echo htmlspecialchars($guild->name) ?>”</h3>
 <?php if ($expulsions): ?>
-	<p><?php echo htmlspecialchars($guild->name) ?> has <?php echo count($expulsions) ?> member expulsion(s).</p>
+	<p><?php echo htmlspecialchars($guild->name) ?> <?php echo htmlspecialchars(Flux::message('DSGView19')) ?> <?php echo count($expulsions) ?> <?php echo htmlspecialchars(Flux::message('DSGView40')) ?></p>
 	<table class="vertical-table">
 		<tr>
-			<th>Account ID</th>
-			<th>Character Name</th>
-			<th>Expulsion Reason</th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView41')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView42')) ?></th>
+			<th><?php echo htmlspecialchars(Flux::message('DSGView43')) ?></th>
 		</tr>
 		<?php foreach ($expulsions AS $expulsion): ?>
 		<tr>
@@ -192,33 +192,33 @@
 			<?php if($expulsion->mes): ?>
 				<?php echo htmlspecialchars($expulsion->mes) ?>
 			<?php else: ?>
-				<span class="not-applicable">None</span>
+				<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSGView16')) ?></span>
 			<?php endif ?>
 			</td>
 		</tr>
 		<?php endforeach ?>
 	</table>
 <?php else: ?>
-	<p>There are no member expulsions for this guild.</p>
+	<p><?php echo htmlspecialchars(Flux::message('DSGView44')) ?></p>
 <?php endif ?>
 <?php if (!Flux::config('GStorageLeaderOnly') || $amOwner || $auth->allowedToViewGuild): ?>
-	<h3>Guild Storage Items of “<?php echo htmlspecialchars($guild->name) ?>”</h3>
+	<h3><?php echo htmlspecialchars(Flux::message('DSGView45')) ?> “<?php echo htmlspecialchars($guild->name) ?>”</h3>
 	<?php if (Flux::config('GStorageLeaderOnly')): ?>
-		<p>Note: Guild Storage Items are only visible to you, the guild leader.</p>
+		<p><?php echo htmlspecialchars(Flux::message('DSGView46')) ?></p>
 	<?php endif ?>
 	<?php if ($items): ?>
-		<p><?php echo htmlspecialchars($guild->name) ?> has <?php echo count($items) ?> guild storage item(s).</p>
+		<p><?php echo htmlspecialchars($guild->name) ?> <?php echo htmlspecialchars(Flux::message('DSGView19')) ?> <?php echo count($items) ?> <?php echo htmlspecialchars(Flux::message('DSGView47')) ?></p>
 		<table class="vertical-table">
 			<tr>
-				<th>Item ID</th>
-				<th colspan="2">Name</th>
-				<th>Amount</th>
-				<th>Identified</th>
-				<th>Broken</th>
-				<th>Card0</th>
-				<th>Card1</th>
-				<th>Card2</th>
-				<th>Card3</th>
+				<th><?php echo htmlspecialchars(Flux::message('DSGView48')) ?></th>
+				<th colspan="2"><?php echo htmlspecialchars(Flux::message('DSGView49')) ?></th>
+				<th><?php echo htmlspecialchars(Flux::message('DSGView50')) ?></th>
+				<th><?php echo htmlspecialchars(Flux::message('DSGView51')) ?></th>
+				<th><?php echo htmlspecialchars(Flux::message('DSGView52')) ?></th>
+				<th><?php echo htmlspecialchars(Flux::message('DSGView53')) ?></th>
+				<th><?php echo htmlspecialchars(Flux::message('DSGView54')) ?></th>
+				<th><?php echo htmlspecialchars(Flux::message('DSGView55')) ?></th>
+				<th><?php echo htmlspecialchars(Flux::message('DSGView56')) ?></th>
 				</th>
 			</tr>
 			<?php foreach ($items AS $item): ?>
@@ -234,9 +234,9 @@
 					<?php endif ?>
 					<?php if ($item->card0 == 255 && intval($item->card1/1280) > 0): ?>
 						<?php for ($i = 0; $i < intval($item->card1/1280); $i++): ?>
-							Very
+							<?php echo htmlspecialchars(Flux::message('DSGView57')) ?>
 						<?php endfor ?>
-						Strong
+						<?php echo htmlspecialchars(Flux::message('DSGView58')) ?>
 					<?php endif ?>
 					<?php if ($item->card0 == 254 || $item->card0 == 255): ?>
 						<?php if ($item->char_name): ?>
@@ -255,7 +255,7 @@
 					<?php if ($item->name_japanese): ?>
 						<span class="item_name"><?php echo htmlspecialchars($item->name_japanese) ?></span>
 					<?php else: ?>
-						<span class="not-applicable">Unknown Item</span>
+						<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSGView59')) ?></span>
 					<?php endif ?>
 					<?php if ($item->slots): ?>
 						<?php echo htmlspecialchars(' [' . $item->slots . ']') ?>
@@ -264,16 +264,16 @@
 				<td><?php echo number_format($item->amount) ?></td>
 				<td>
 					<?php if ($item->identify): ?>
-						<span class="identified yes">Yes</span>
+						<span class="identified yes"><?php echo htmlspecialchars(Flux::message('DSGView60')) ?></span>
 					<?php else: ?>
-						<span class="identified no">No</span>
+						<span class="identified no"><?php echo htmlspecialchars(Flux::message('DSGView61')) ?></span>
 					<?php endif ?>
 				</td>
 				<td>
 					<?php if ($item->attribute): ?>
-						<span class="broken yes">Yes</span>
+						<span class="broken yes"><?php echo htmlspecialchars(Flux::message('DSGView60')) ?></span>
 					<?php else: ?>
-						<span class="broken no">No</span>
+						<span class="broken no"><?php echo htmlspecialchars(Flux::message('DSGView61')) ?></span>
 					<?php endif ?>
 				</td>
 				<td>
@@ -284,7 +284,7 @@
 							<?php echo $this->linkToItem($item->card0, $item->card0) ?>
 						<?php endif ?>
 					<?php else: ?>
-						<span class="not-applicable">None</span>
+						<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSGView16')) ?></span>
 					<?php endif ?>
 				</td>
 				<td>
@@ -295,7 +295,7 @@
 							<?php echo $this->linkToItem($item->card1, $item->card1) ?>
 						<?php endif ?>
 					<?php else: ?>
-						<span class="not-applicable">None</span>
+						<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSGView16')) ?></span>
 					<?php endif ?>
 				</td>
 				<td>
@@ -306,7 +306,7 @@
 							<?php echo $this->linkToItem($item->card2, $item->card2) ?>
 						<?php endif ?>
 					<?php else: ?>
-						<span class="not-applicable">None</span>
+						<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSGView16')) ?></span>
 					<?php endif ?>
 				</td>
 				<td>
@@ -317,16 +317,16 @@
 							<?php echo $this->linkToItem($item->card3, $item->card3) ?>
 						<?php endif ?>
 					<?php else: ?>
-						<span class="not-applicable">None</span>
+						<span class="not-applicable"><?php echo htmlspecialchars(Flux::message('DSGView16')) ?></span>
 					<?php endif ?>
 				</td>
 			</tr>
 			<?php endforeach ?>
 		</table>
 	<?php else: ?>
-		<p>There are no guild storage items for this guild.</p>
+		<p><?php echo htmlspecialchars(Flux::message('DSGView63')) ?></p>
 	<?php endif ?>
 <?php endif ?>
 <?php else: ?>
-<p>No such guild was found. <a href="javascript:history.go(-1)">Go back</a>.</p>
+<p><?php echo htmlspecialchars(Flux::message('DSGView63')) ?> <a href="javascript:history.go(-1)"><?php echo htmlspecialchars(Flux::message('DSGView64')) ?></a>.</p>
 <?php endif ?>

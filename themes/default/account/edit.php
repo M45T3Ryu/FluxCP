@@ -40,7 +40,7 @@
 						<?php echo $state ?>
 					<?php elseif ($account->unban_time): ?>
 						<span class="account-state state-banned">
-							Banned Until
+							<?php echo htmlspecialchars(Flux::message('DSAccEdit1')) ?>
 							<?php echo htmlspecialchars(date(Flux::config('DateTimeFormat'), $account->unban_time)) ?>
 						</span>
 					<?php else: ?>

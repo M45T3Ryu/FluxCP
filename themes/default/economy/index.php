@@ -1,2 +1,2 @@
 <?php if (!defined('FLUX_ROOT')) exit; ?>
-<h2>Economy</h2>
+<h2><?php echo htmlspecialchars(Flux::message('DSEconomy1')) ?></h2>

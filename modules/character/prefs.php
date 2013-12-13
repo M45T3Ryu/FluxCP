@@ -33,11 +33,11 @@ if ($char) {
 		$res = $server->setPrefs($charID, $set);
 		
 		if ($res) {
-			$session->setMessageData('Preferences have been modified.');
+			$session->setMessageData(htmlspecialchars(Flux::message('DMCharPref1')));
 			$this->redirect($this->urlWithQs);
 		}
 		else {
-			$errorMessage = 'Failed to modify preferences.';
+			$errorMessage = htmlspecialchars(Flux::message('DMCharPref2'));
 		}
 	}
 }

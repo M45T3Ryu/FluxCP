@@ -1,12 +1,12 @@
 <?php if (!defined('FLUX_ROOT')) exit; ?>
-<h2>Castles</h2>
-<p>This page shows what castles are activated and which guilds own them.</p>
+<h2><?php echo htmlspecialchars(Flux::message('DSCastle1')) ?></h2>
+<p><?php echo htmlspecialchars(Flux::message('DSCastle2')) ?></p>
 <?php if ($castles): ?>
 <table class="vertical-table">
 	<tr>
-		<th>Castle ID</th>
-		<th>Castle</th>
-		<th colspan="2">Guild</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSCastle3')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSCastle4')) ?></th>
+		<th colspan="2"><?php echo htmlspecialchars(Flux::message('DSCastle5')) ?></th>
 	</tr>
 	<?php foreach ($castles as $castle): ?>
 		<tr>
@@ -32,5 +32,5 @@
 	<?php endforeach ?>
 </table>
 <?php else: ?>
-<p>No castles found. <a href="javascript:history.go(-1)">Go back</a>.</p>
+<p><?php echo htmlspecialchars(Flux::message('DSCastle6')) ?> <a href="javascript:history.go(-1)"><?php echo htmlspecialchars(Flux::message('DSCastle7')) ?></a>.</p>
 <?php endif ?>

@@ -3,7 +3,7 @@ if (!defined('FLUX_ROOT')) exit;
 
 $this->loginRequired();
 
-$title = 'Reset Position';
+$title = htmlspecialchars(Flux::message('DMCharT5'));
 
 $charID = $params->get('id');
 if (!$charID) {

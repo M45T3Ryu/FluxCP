@@ -7,7 +7,7 @@
 <table class="vertical-table">
 	<tr>
 		<th><?php echo htmlspecialchars(Flux::message('UsernameLabel')) ?></th>
-		<td><?php echo htmlspecialchars($account->userid) ?></td>
+		<td><?php echo $account->userid ?></td>
 		<th><?php echo htmlspecialchars(Flux::message('AccountIdLabel')) ?></th>
 		<td>
 			<?php if ($auth->allowedToSeeAccountID): ?>
@@ -239,7 +239,7 @@
 		</tr>
 		<?php endforeach ?>
 		</table>
-		<p>Total Zeny: <strong><?php echo number_format($zeny) ?></strong></p>
+		<p><?php echo htmlspecialchars(Flux::message('DSAccView1')) ?> <strong><?php echo number_format($zeny) ?></strong></p>
 	<?php else: ?>
 	<p><?php echo htmlspecialchars(sprintf(Flux::message('AccountViewNoChars'), $serverName)) ?></p>
 	<?php endif ?>
@@ -280,9 +280,9 @@
 				<?php endif ?>
 				<?php if ($item->card0 == 255 && intval($item->card1/1280) > 0): ?>
 					<?php for ($i = 0; $i < intval($item->card1/1280); $i++): ?>
-						Very
+						<?php echo htmlspecialchars(Flux::message('DSAccView2')) ?>
 					<?php endfor ?>
-					Strong
+					<?php echo htmlspecialchars(Flux::message('DSAccView3')) ?>
 				<?php endif ?>
 				<?php if ($item->card0 == 254 || $item->card0 == 255): ?>
 					<?php if ($item->char_name): ?>

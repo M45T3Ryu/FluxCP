@@ -1,12 +1,12 @@
 <?php if (!defined('FLUX_ROOT')) exit; ?>
-<h2>Trusted PayPal E-mails</h2>
+<h2><?php echo htmlspecialchars(Flux::message('DSDTrusted1')) ?></h2>
 <?php if ($emails): ?>
-<p>Below is a list of your trusted PayPal e-mail addresses.</p>
-<p>Trusted e-mails do not undergo any holding process, therefore donations made by them will allow you to receive your credits <strong>instantly</strong>.</p>
+<p><?php echo htmlspecialchars(Flux::message('DSDTrusted2')) ?></p>
+<p><?php echo htmlspecialchars(Flux::message('DSDTrusted3')) ?> <strong><?php echo htmlspecialchars(Flux::message('DSDTrusted4')) ?></strong>.</p>
 <table class="vertical-table">
 	<tr>
-		<th>E-mail Address</th>
-		<th>Date/Time Established</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDTrusted5')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDTrusted6')) ?></th>
 	</tr>
 	<?php foreach ($emails as $email): ?>
 	<tr>
@@ -16,8 +16,8 @@
 	<?php endforeach ?>
 </table>
 <?php else: ?>
-<p>You do not have any trusted PayPal e-mail addresses.</p>
+<p><?php echo htmlspecialchars(Flux::message('DSDTrusted7')) ?></p>
 <?php if (!Flux::config('HoldUntrustedAccount')): ?>
-<p>This is most likely because the credit holding system is currently <strong>not in effect</strong>, which means a donation made from any e-mail address is immediately accredited.</p>
+<p><?php echo htmlspecialchars(Flux::message('DSDTrusted8')) ?> <strong><?php echo htmlspecialchars(Flux::message('DSDTrusted9')) ?></strong><?php echo htmlspecialchars(Flux::message('DSDTrusted10')) ?></p>
 <?php endif ?>
 <?php endif ?>

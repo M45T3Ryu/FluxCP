@@ -1,7 +1,7 @@
 <?php
 if (!defined('FLUX_ROOT')) exit;
 
-$title = "Who's Online";
+$title = htmlspecialchars(Flux::message('DMCharT3'));
 
 $charPrefsTable = Flux::config('FluxTables.CharacterPrefsTable');
 

@@ -1,16 +1,16 @@
-<?php if (!defined('FLUX_ROOT')) exit; ?>
-<h2>Donation History</h2>
-<h3>Transactions: Completed</h3>
+﻿<?php if (!defined('FLUX_ROOT')) exit; ?>
+<h2><?php echo htmlspecialchars(Flux::message('DSDHistory1')) ?></h2>
+<h3><?php echo htmlspecialchars(Flux::message('DSDHistory2')) ?></h3>
 <?php if ($completedTxn): ?>
-<p>You have <?php echo number_format($completedTotal) ?> completed transaction(s).</p>
+<p><?php echo htmlspecialchars(Flux::message('DSDHistory3')) ?> <?php echo number_format($completedTotal) ?> <?php echo htmlspecialchars(Flux::message('DSDHistory4')) ?></p>
 <table class="vertical-table">
 	<tr>
-		<th>Transaction</th>
-		<th>Payment Date</th>
-		<th>E-mail</th>
-		<th>Amount</th>
-		<th>Currency</th>
-		<th>Credits</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory5')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory6')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory7')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory8')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory9')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory10')) ?></th>
 	</tr>
 	<?php foreach ($completedTxn as $txn): ?>
 	<tr>
@@ -24,20 +24,20 @@
 	<?php endforeach ?>
 </table>
 <?php else: ?>
-<p>You have no completed transactions.</p>
+<p><?php echo htmlspecialchars(Flux::message('DSDHistory11')) ?></p>
 <?php endif ?>
 
-<h3>Transactions: Held</h3>
+<h3><?php echo htmlspecialchars(Flux::message('DSDHistory12')) ?></h3>
 <?php if ($heldTxn): ?>
-<p>You have <?php echo number_format($heldTotal) ?> held transaction(s).</p>
+<p><?php echo htmlspecialchars(Flux::message('DSDHistory13')) ?> <?php echo number_format($heldTotal) ?> <?php echo htmlspecialchars(Flux::message('DSDHistory14')) ?></p>
 <table class="vertical-table">
 	<tr>
-		<th>Transaction</th>
-		<th>Payment Date</th>
-		<th>E-mail</th>
-		<th>Amount</th>
-		<th>Currency</th>
-		<th>Credits</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory5')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory6')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory7')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory8')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory9')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory10')) ?></th>
 	</tr>
 	<?php foreach ($heldTxn as $txn): ?>
 	<tr>
@@ -50,27 +50,27 @@
 	</tr>
 	<tr>
 		<td colspan="6">
-			↳ Hold Until:
+			<?php echo htmlspecialchars(Flux::message('DSDHistory15')) ?>
 			<strong><?php echo $this->formatDateTime($txn->hold_until) ?></strong>
 		</td>
 	</tr>
 	<?php endforeach ?>
 </table>
 <?php else: ?>
-<p>You have no held transactions.</p>
+<p><?php echo htmlspecialchars(Flux::message('DSDHistory16')) ?></p>
 <?php endif ?>
 
-<h3>Transactions: Failed</h3>
+<h3><?php echo htmlspecialchars(Flux::message('DSDHistory17')) ?></h3>
 <?php if ($failedTxn): ?>
-<p>You have <?php echo number_format($failedTotal) ?> held transaction(s).</p>
+<p><?php echo htmlspecialchars(Flux::message('DSDHistory13')) ?> <?php echo number_format($failedTotal) ?> <?php echo htmlspecialchars(Flux::message('DSDHistory14')) ?></p>
 <table class="vertical-table">
 	<tr>
-		<th>Transaction</th>
-		<th>Payment Date</th>
-		<th>E-mail</th>
-		<th>Amount</th>
-		<th>Currency</th>
-		<th>Credits</th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory5')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory6')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory7')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory8')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory9')) ?></th>
+		<th><?php echo htmlspecialchars(Flux::message('DSDHistory10')) ?></th>
 	</tr>
 	<?php foreach ($failedTxn as $txn): ?>
 	<tr>
@@ -84,5 +84,5 @@
 	<?php endforeach ?>
 </table>
 <?php else: ?>
-<p>You have no failed transactions.</p>
+<p><?php echo htmlspecialchars(Flux::message('DSDHistory18')) ?></p>
 <?php endif ?>
